@@ -1,2 +1,2 @@
 #!/bin/bash
-printf $PATH |tr -s ":" "\n" | wc -l
+echo $(($(grep ':/' -o <<< $PATH | wc -l) + 1))
