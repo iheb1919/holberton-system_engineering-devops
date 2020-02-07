@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# This script that loops from 1 to 10
+i=1; while [ $i -le 10 ]; do if (( i%8 == 0 )); then echo good luck; elif (( i%4 == 0 ));then echo bad luck; else echo Holberton School; fi; i=$((i+1)); done
