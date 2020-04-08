@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Not found page 404
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo chown -R ubuntu:ubuntu /var/www
+sudo echo "Ceci n'est pas une page" > /var/www/html/404.html
+sudo sed -i "63i \\\n\terror_page 404 /404.html;\n" /etc/nginx/sites-available/default
+sudo service nginx restart
