@@ -13,12 +13,12 @@ if __name__ == '__main__':
         print("id must be an integer")
 
     url = "https://jsonplaceholder.typicode.com/"
-    task_done = requests.get(url + 'todos',
-                             params={"userId": sys.argv[1]}).json()
-    tasks = requests.get(url + 'todos?userId=' + sys.argv[1]).json()
+    task_done = requests.get(url + "todos?userId={}&completed=true"
+                             .format(sys.argv[1]))
+    tasks = requests.get(url + 'todos?userId=' + sys.argv[1])
     name = requests.get(url + 'users/' + sys.argv[1]).json()["name"]
     print("Employee {} is done with tasks({}/{}):"
-          .format(name, len(task_done), len(tasks)))
-    for i in tasks:
+          .format(name, len(task_done.json()), len(tasks.json())))
+    for i in tasks.json():
         if i["completed"]:
             print("\t " + i["title"])

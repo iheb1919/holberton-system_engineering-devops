@@ -28,4 +28,4 @@ if __name__ == '__main__':
         json1.append(json2)
     json0.setdefault(sys.argv[1], json1)
     with open(sys.argv[1] + ".json", "w") as fcsv:
-        json.dump(json0, scsv)
+        json.dump(json0, fcsv)
