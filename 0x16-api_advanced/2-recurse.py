@@ -9,11 +9,8 @@ import requests
 def recurse(subreddit, hot_list=[], after=""):
     url = 'http://reddit.com/r/{}/hot.json'
     header = {'User-agent': 'iheb1919'}
-    params = {'t': all, 'after': after}
     req = requests.get(url.format(subreddit), headers=header,
-                       params=params)
-    print(url.format(subreddit), headers=header,
-          params=params)
+                       params={'t': all, 'after': after})
     if not req or req.status_code != 200:
         return None
     for i in req.json()['data']['children']:
