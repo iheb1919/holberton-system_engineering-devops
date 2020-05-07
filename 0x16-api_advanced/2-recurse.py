@@ -6,7 +6,6 @@ Recurse it!
 import requests
 
 
-
 def recurse(subreddit, hot_list=[], after=""):
     url = 'http://reddit.com/r/{}/hot.json'
     header = {'User-agent': 'iheb1919'}
@@ -14,8 +13,8 @@ def recurse(subreddit, hot_list=[], after=""):
     req = requests.get(url.format(subreddit), headers=header,
                        params=params)
     print(url.format(subreddit), headers=header,
-                       params=params)
-    if req.status_code != 200 or not req:
+          params=params)
+    if not req or req.status_code != 200:
         return None
     for i in req.json()['data']['children']:
         hot_list.append(i['data']['title'])
